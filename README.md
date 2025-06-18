@@ -1,1 +1,3 @@
 Jupyter notebook for nanostructure forward modeling, aditional Python and shell scripts to run light-material interaction simulations in ADDA locally (BONFIRE) and on Lakeshore cluster. 
+
+Also included Python scripts to interpolate RI from published n, k values and convert to eps format.
