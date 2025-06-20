@@ -3,22 +3,23 @@
 #SBATCH --job-name=test_ADDA
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=24
-#SBATCH --time=24:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=OUTPUT.ADDA_%j.log
 #SBATCH --mail-user=weaackerm@uic.edu
 
 module load adda/1.4.0
 module load apptainer
 # Add bc module for floating-point calculations
-module load bc
+#module load bc
+module load OpenMPI
 
 cd /home/weackerm/com_irina_chi_link/weackerm/DDA_Input
 
 # Configuration
-SHAPE_FILE="ag_fcc_100_stabilized_moderate_10nm.dat"
-BASE_OUTPUT_DIR="ag_wavelength_scan"
-WL_START=300
-WL_END=500
+SHAPE_FILE="ag_fcc_100_stabilized_moderate_25nm.dat"
+BASE_OUTPUT_DIR="ag_25nm_TEST2_wavelength_scan"
+WL_START=400
+WL_END=403
 WL_STEP=2.5
 
 # Medium refractive index (water)
@@ -151,7 +152,7 @@ for wl in $(seq $WL_START $WL_STEP $WL_END); do
     
     # Run ADDA with relative refractive index
     echo "  Running ADDA simulation..."
-    apptainer exec /software/EasyBuild/AMD_EPYC_7763_64-Core_Processor/software/adda/1.4.0/adda.sif adda \
+    mpirun -np 24 apptainer exec /software/EasyBuild/AMD_EPYC_7763_64-Core_Processor/software/adda/1.4.0/adda.sif adda_mpi \
          -shape read $SHAPE_FILENAME \
          -lambda $wl \
          -m $n_rel_real $n_rel_imag \
