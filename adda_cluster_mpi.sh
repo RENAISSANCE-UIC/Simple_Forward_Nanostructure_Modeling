@@ -3,7 +3,7 @@
 #SBATCH --job-name=test_ADDA
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=24
-#SBATCH --time=04:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=OUTPUT.ADDA_%j.log
 #SBATCH --mail-user=weaackerm@uic.edu
 
@@ -15,10 +15,10 @@ module load bc
 cd /home/weackerm/com_irina_chi_link/weackerm/DDA_Input
 
 # Configuration
-SHAPE_FILE="ag_fcc_100_stabilized_moderate_25nm.dat"
-BASE_OUTPUT_DIR="ag_25nm_TEST_wavelength_scan"
-WL_START=400
-WL_END=403
+SHAPE_FILE="ag_fcc_100_stabilized_moderate_10nm.dat"
+BASE_OUTPUT_DIR="ag_wavelength_scan"
+WL_START=300
+WL_END=500
 WL_STEP=2.5
 
 # Medium refractive index (water)
