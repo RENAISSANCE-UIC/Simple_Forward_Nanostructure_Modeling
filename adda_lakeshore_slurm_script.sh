@@ -3,22 +3,22 @@
 #SBATCH --job-name=test_ADDA
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=24
-#SBATCH --time=24:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=OUTPUT.ADDA_%j.log
 #SBATCH --mail-user=weaackerm@uic.edu
 
 module load adda/1.4.0
 module load apptainer
 # Add bc module for floating-point calculations
-module load bc
+# module load bc # This is not used on the cluster
 
 cd /home/weackerm/com_irina_chi_link/weackerm/DDA_Input
 
 # Configuration
 SHAPE_FILE="ag_fcc_100_stabilized_moderate_25nm.dat"
-BASE_OUTPUT_DIR="ag_25nm_wavelength_scan"
-WL_START=300
-WL_END=500
+BASE_OUTPUT_DIR="ag_25nm_TEST_wavelength_scan"
+WL_START=400
+WL_END=403
 WL_STEP=2.5
 
 # Medium refractive index (water)
@@ -189,4 +189,5 @@ done
 echo "Wavelength scan completed!"
 echo "Results saved in: $RESULTS_FILE"
 echo "Individual simulation data in: wl_*nm/"
+
 
