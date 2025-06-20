@@ -17,7 +17,7 @@ cd /home/weackerm/com_irina_chi_link/weackerm/DDA_Input
 
 # Configuration
 SHAPE_FILE="ag_fcc_100_stabilized_moderate_25nm.dat"
-BASE_OUTPUT_DIR="ag_25nm_TEST2_wavelength_scan"
+BASE_OUTPUT_DIR="ag_25nm_mpi_wavelength_scan"
 WL_START=400
 WL_END=403
 WL_STEP=2.5
